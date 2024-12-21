@@ -6,6 +6,7 @@
  * TO DO : change the P-net and update the generat box
  */
 
+#define NOMINMAX
 #include "mtcnn.h"
 
 bool cmpScore(Bbox lsh, Bbox rsh) {
@@ -73,6 +74,7 @@ void MTCNN::generateBbox(ncnn::Mat score, ncnn::Mat location, std::vector<Bbox>&
     float inv_scale = 1.0f/scale;
     for(int row=0;row<score.h;row++){
         for(int col=0;col<score.w;col++){
+        	std::cout << "*p: " << *p << std::endl;
             if(*p>threshold[0]){
                 bbox.score = *p;
                 bbox.x1 = round((stride*col+1)*inv_scale);

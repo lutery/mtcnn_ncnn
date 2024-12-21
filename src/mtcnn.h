@@ -62,7 +62,7 @@ private:
     std::vector<Bbox> firstBbox_, secondBbox_,thirdBbox_;
     int img_w, img_h;
 
-private://²¿·Ö¿Éµ÷²ÎÊý
+private://ï¿½ï¿½ï¿½Ö¿Éµï¿½ï¿½ï¿½ï¿½ï¿½
 	const float threshold[3] = { 0.8f, 0.8f, 0.6f };
 	int minsize = 40;
 	const float pre_facetor = 0.709f;

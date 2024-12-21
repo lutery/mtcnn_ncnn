@@ -8,15 +8,17 @@ project(mtcnn_ncnn C CXX)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 #4.include头文件目录 
-include_directories(${CMAKE_CURRENT_LIST_DIR}/3rdparty/include/Opencv
-					${CMAKE_CURRENT_LIST_DIR}/3rdparty/include/Opencv/opencv
-					${CMAKE_CURRENT_LIST_DIR}/3rdparty/include/Opencv/opencv2
-					${CMAKE_CURRENT_LIST_DIR}/3rdparty/include/ncnn
+include_directories(F:/DevelopmentKit/opencv/build/include
+					F:/DevelopmentKit/opencv/build/include/opencv2
+					F:/Projects/OpenSrouce/cpp/ncnn/ncnn/build2019/install/include/ncnn
                     ${CMAKE_CURRENT_LIST_DIR}/src)
 
 #5.library目录及name名称
-link_directories(${CMAKE_CURRENT_LIST_DIR}/3rdparty/lib)
-list(APPEND MTCNN_LINKER_LIBS opencv_world320 ncnn)
+link_directories(
+		F:/DevelopmentKit/opencv/build/x64/vc16/lib
+		F:/Projects/OpenSrouce/cpp/ncnn/ncnn/build2019/install/lib
+)
+list(APPEND MTCNN_LINKER_LIBS opencv_world480d ncnnd)
 
 #6.source directory源文件目录
 file(GLOB MTCNN_SRC ${CMAKE_CURRENT_LIST_DIR}/src/*.h

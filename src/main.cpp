@@ -22,7 +22,8 @@ void test_video() {
 		}
 
 		clock_t start_time = clock();
-		
+		frame = cv::imread(R"(F:\Download Files\1.jpg)");
+		cv::resize(frame, frame, Size(640, 480));
 		ncnn::Mat ncnn_img = ncnn::Mat::from_pixels(frame.data, ncnn::Mat::PIXEL_BGR2RGB, frame.cols, frame.rows);
 		std::vector<Bbox> finalBbox;
 #if(MAXFACEOPEN==1)
@@ -38,7 +39,7 @@ void test_video() {
 		
 			for (int j = 0; j<5; j = j + 1)
 			{
-				cv::circle(frame, cvPoint(finalBbox[i].ppoint[j], finalBbox[i].ppoint[j + 5]), 2, CV_RGB(0, 255, 0), CV_FILLED);
+				cv::circle(frame, cv::Point(finalBbox[i].ppoint[j], finalBbox[i].ppoint[j + 5]), 2, cv::Scalar(0, 255, 0), -1);
 			}
 		}
 		for (vector<cv::Rect>::iterator it = bbox.begin(); it != bbox.end(); it++) {
@@ -82,7 +83,7 @@ int test_picture(){
 
 		for (int j = 0; j<5; j = j + 1)
 		{
-			cv::circle(image, cvPoint(finalBbox[i].ppoint[j], finalBbox[i].ppoint[j + 5]), 2, CV_RGB(0, 255, 0), CV_FILLED);
+			cv::circle(image, cv::Point(finalBbox[i].ppoint[j], finalBbox[i].ppoint[j + 5]), 2, cv::Scalar(0, 255, 0), -1);
 		}
 	}
 	for (vector<cv::Rect>::iterator it = bbox.begin(); it != bbox.end(); it++) {
@@ -96,6 +97,7 @@ int test_picture(){
 
 	cv::waitKey(0);
 
+	return 0;
 }
 
 int main(int argc, char** argv) {
